@@ -11,7 +11,7 @@ class PlayTests {
 
   @Test
   @DisplayName("test get object address")
-  def testAddress() = {
+  def testGetObjectAddress() = {
     val addressExtractor: AddressExtractor = new AddressExtractor()
     val clazz:Class[_ <:AddressExtractor] = addressExtractor.getClass
     val field: Field = clazz.getDeclaredField("pointerValue")
