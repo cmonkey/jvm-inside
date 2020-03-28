@@ -56,7 +56,10 @@ class PlayTest {
     field.set(addressExtractor, dummy)
 
     val trickAddress = addressExtractor.pointerValue - 8
-    intsExtractorField.setLong(intsExtractor, trickAddress)
+
+    assertThrows(classOf[IllegalArgumentException], () => {
+      intsExtractorField.setLong(intsExtractor, trickAddress)
+    })
 
     println(s"intsExtractor length = ${intsExtractor.ints.length}")
 
