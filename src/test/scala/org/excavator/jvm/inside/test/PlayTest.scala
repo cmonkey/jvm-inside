@@ -7,7 +7,7 @@ import org.excavator.jvm.inside.AddressExtractor
 import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.{DisplayName, Test}
 
-class PlayTests {
+class PlayTest {
 
   @Test
   @DisplayName("test get object address")
