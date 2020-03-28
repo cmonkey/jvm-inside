@@ -30,4 +30,10 @@ class PlayTests {
     assertEquals(field.get(addressExtractor), dummy)
   }
 
+  @Test
+  @DisplayName("test Reading Object Content")
+  def testReadingObjectContent() = {
+
+  }
+
 }
