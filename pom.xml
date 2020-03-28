@@ -18,7 +18,10 @@
         <scala.version>${scala.major-version}.10</scala.version>
 		<junit-jupiter.version>5.5.2</junit-jupiter.version>
 		<alchim31.scala.plugin>4.3.0</alchim31.scala.plugin>
+		<maven.source.plugin>3.2.0</maven.source.plugin>
 		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
+		<maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
+		<main.user.dir>${user.dir}</main.user.dir>
     </properties>
     <dependencies>
         <dependency>
@@ -68,6 +71,40 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.plugin}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+                <configuration>
+					<skipSource>true</skipSource>
+                </configuration>
+			</plugin>
+
+        <plugin>
+				<groupId>com.googlecode.maven-java-formatter-plugin</groupId>
+				<artifactId>maven-java-formatter-plugin</artifactId>
+				<version>${maven.java.formatter.plugin}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<configFile>${main.user.dir}/Formatter.xml</configFile>
+					<encoding>${project.encoding}</encoding>
+				</configuration>
+			</plugin>
+
 
 
 		<plugin>

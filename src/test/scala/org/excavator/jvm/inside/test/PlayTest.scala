@@ -7,7 +7,7 @@ import org.excavator.jvm.inside.AddressExtractor
 import org.junit.jupiter.api.Assertions._
 import org.junit.jupiter.api.{DisplayName, Test}
 
-class PlayTests {
+class PlayTest {
 
   @Test
   @DisplayName("test get object address")
@@ -56,13 +56,18 @@ class PlayTests {
     field.set(addressExtractor, dummy)
 
     val trickAddress = addressExtractor.pointerValue - 8
-    intsExtractorField.setLong(intsExtractor, trickAddress)
+
+    assertThrows(classOf[IllegalArgumentException], () => {
+      intsExtractorField.setLong(intsExtractor, trickAddress)
+    })
 
     println(s"intsExtractor length = ${intsExtractor.ints.length}")
 
-    for (i <- 0 until 3){
-      println(s"intsExtractor elem = ${intsExtractor.ints(i)}")
-    }
+    assertThrows(classOf[ArrayIndexOutOfBoundsException], () => {
+      for (i <- 0 until 3){
+        println(s"intsExtractor elem = ${intsExtractor.ints(i)}")
+      }
+    })
   }
 
 }

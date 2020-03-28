@@ -1,0 +1,23 @@
+language: java
+sudo: false
+
+dist: xenial
+
+addons:
+  hosts:
+    - www.excavator.boot
+    - www.excavator.com
+cache:
+  directories:
+  - $HOME/.m2
+
+jdk:
+- openjdk8
+
+install:
+  - mvn clean install -DskipTests=true -B -V
+
+script:
+  - mvn -q test -Dio.netty.leakDetection.level=paranoid
+  - sh ./check_format.sh
+

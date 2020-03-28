@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import org.excavator.jvm.inside.Item;
 import org.junit.jupiter.api.*;
 
-public class ErasureTypeInferenceIssue {
+public class ErasureTypeInferenceIssueTest {
 
-  @Test
+    @Test
   @DisplayName("erasure type inference issue")
   public void  testErasureTypeInferenceIssue() {
 
@@ -19,5 +19,4 @@ public class ErasureTypeInferenceIssue {
     List<Item> items = strings.stream().map(item -> new Item(new HashMap<>()))
       .collect(Collectors.toList());
   }
-
 }
