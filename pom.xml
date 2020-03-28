@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
 	<properties>
-        <java.version>14</java.version>
+        <java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.encoding>UTF-8</project.encoding>
@@ -17,6 +17,7 @@
         <scala.major-version>2.12</scala.major-version>
         <scala.version>${scala.major-version}.10</scala.version>
 		<alchim31.scala.plugin>4.3.0</alchim31.scala.plugin>
+		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
     </properties>
     <dependencies>
         <dependency>
@@ -38,6 +39,18 @@
 
     <build>
         <plugins>
+        <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+				<configuration>
+					<encoding>${project.encoding}</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+
 		<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
