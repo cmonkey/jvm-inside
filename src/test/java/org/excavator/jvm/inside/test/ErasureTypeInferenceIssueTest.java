@@ -10,7 +10,7 @@ import org.junit.jupiter.api.*;
 
 public class ErasureTypeInferenceIssueTest {
 
-  @Test
+    @Test
   @DisplayName("erasure type inference issue")
   public void  testErasureTypeInferenceIssue() {
 
@@ -19,5 +19,4 @@ public class ErasureTypeInferenceIssueTest {
     List<Item> items = strings.stream().map(item -> new Item(new HashMap<>()))
       .collect(Collectors.toList());
   }
-
 }
