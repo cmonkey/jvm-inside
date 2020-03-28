@@ -63,9 +63,11 @@ class PlayTest {
 
     println(s"intsExtractor length = ${intsExtractor.ints.length}")
 
-    for (i <- 0 until 3){
-      println(s"intsExtractor elem = ${intsExtractor.ints(i)}")
-    }
+    assertThrows(classOf[ArrayIndexOutOfBoundsException], () => {
+      for (i <- 0 until 3){
+        println(s"intsExtractor elem = ${intsExtractor.ints(i)}")
+      }
+    })
   }
 
 }
