@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.excavator.jvm.inside.Item;
 import org.junit.jupiter.api.*;
 
-public class ErasureTypeInferenceIssue {
+public class ErasureTypeInferenceIssueTest {
 
   @Test
   @DisplayName("erasure type inference issue")
