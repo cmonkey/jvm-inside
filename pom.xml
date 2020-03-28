@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.excavator.jvm.inside</groupId>
+    <artifactId>jvm-inside</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+	<properties>
+        <java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.encoding>UTF-8</project.encoding>
+		<project.build.encoding>UTF-8</project.build.encoding>
+        <scala.major-version>2.12</scala.major-version>
+        <scala.version>${scala.major-version}.10</scala.version>
+		<junit-jupiter.version>5.5.2</junit-jupiter.version>
+		<alchim31.scala.plugin>4.3.0</alchim31.scala.plugin>
+		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
+    </properties>
+    <dependencies>
+        <dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-compiler</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-reflect</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${junit-jupiter.version}</version>
+		</dependency>
+
+	</dependencies>
+
+    <build>
+        <plugins>
+        <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+				<configuration>
+					<encoding>${project.encoding}</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+
+		<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<version>${alchim31.scala.plugin}</version>
+				<executions>
+					<execution>
+						<id>compile-scala</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile-scala</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<recompileMode>incremental</recompileMode>
+					<compileOrder>Mixed</compileOrder>
+					<scalaVersion>${scala.version}</scalaVersion>
+					<args>
+						<arg>-deprecation</arg>
+					</args>
+					<jvmArgs>
+						<jvmArg>-Xms64m</jvmArg>
+						<jvmArg>-Xmx1024m</jvmArg>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+
+</project>
