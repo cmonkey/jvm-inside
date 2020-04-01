@@ -24,10 +24,9 @@ public class JavaMapDoubleTest {
         assertEquals(60.0, sum);
 
     }
-
 }
 
-class Price{
+class Price {
     private double price;
 
     public Price(double price) {
